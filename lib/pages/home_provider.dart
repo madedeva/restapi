@@ -10,7 +10,7 @@ class HomeProvider extends StatelessWidget {
     final dataProvider = Provider.of<HttpProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text("POST - PROVIDER"),
+        title: const Text("POST - PROVIDER"),
       ),
       body: Container(
         width: double.infinity,
@@ -18,56 +18,56 @@ class HomeProvider extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
-            FittedBox(child: Text("nama : ", style: TextStyle(fontSize: 20))),
+            const SizedBox(height: 20),
+            const FittedBox(child: Text("nama : ", style: TextStyle(fontSize: 20))),
             FittedBox(
               child: Consumer<HttpProvider>(
                 builder: (context, value, child) => Text(
                   (value.data["nama"] == null)
                       ? "${value.data}"
                       : "${value.data["nama"]}",
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            FittedBox(child: Text("alamat : ", style: TextStyle(fontSize: 20))),
+            const SizedBox(height: 20),
+            const FittedBox(child: Text("alamat : ", style: TextStyle(fontSize: 20))),
             FittedBox(
               child: Consumer<HttpProvider>(
                 builder: (context, value, child) => Text(
                   (value.data["alamat"] == null)
                       ? "Belum ada data"
                       : "${value.data["alamat"]}",
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            FittedBox(child: Text("jk : ", style: TextStyle(fontSize: 20))),
+            const SizedBox(height: 20),
+            const FittedBox(child: Text("jk : ", style: TextStyle(fontSize: 20))),
             FittedBox(
               child: Consumer<HttpProvider>(
                 builder: (context, value, child) => Text(
                   (value.data["jk"] == null)
                       ? "Belum ada data"
                       : "${value.data["jk"]}",
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            FittedBox(child: Text("nim : ", style: TextStyle(fontSize: 20))),
+            const SizedBox(height: 20),
+            const FittedBox(child: Text("nim : ", style: TextStyle(fontSize: 20))),
             FittedBox(
               child: Consumer<HttpProvider>(
                 builder: (context, value, child) => Text(
                   (value.data["nim"] == null)
                       ? "Belum ada data"
                       : "${value.data["nim"]}",
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            FittedBox(
+            const SizedBox(height: 20),
+            const FittedBox(
                 child: Text("jurusan : ", style: TextStyle(fontSize: 20))),
             FittedBox(
               child: Consumer<HttpProvider>(
@@ -75,11 +75,11 @@ class HomeProvider extends StatelessWidget {
                   (value.data["jurusan"] == null)
                       ? "Belum ada data"
                       : "${value.data["jurusan"]}",
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             ),
-            SizedBox(height: 100),
+            const SizedBox(height: 100),
             OutlinedButton(
               onPressed: () {
                 dataProvider.connectAPI(
@@ -90,7 +90,7 @@ class HomeProvider extends StatelessWidget {
                     jurusan: "Teknik Informatika",
                     request: "post");
               },
-              child: Text(
+              child: const Text(
                 "POST DATA",
                 style: TextStyle(
                   fontSize: 25,
