@@ -10,7 +10,8 @@ class HomeProvider extends StatelessWidget {
     final dataProvider = Provider.of<HttpProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("POST - PROVIDER"),
+        title: const Text("Post Data API"),
+        elevation: 0,
       ),
       body: Container(
         width: double.infinity,
@@ -24,7 +25,7 @@ class HomeProvider extends StatelessWidget {
               child: Consumer<HttpProvider>(
                 builder: (context, value, child) => Text(
                   (value.data["nama"] == null)
-                      ? "${value.data}"
+                      ? "Belum ada data"
                       : "${value.data["nama"]}",
                   style: const TextStyle(fontSize: 20),
                 ),
@@ -91,9 +92,9 @@ class HomeProvider extends StatelessWidget {
                     request: "post");
               },
               child: const Text(
-                "POST DATA",
+                "Post Data",
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 18,
                 ),
               ),
             ),
@@ -103,4 +104,3 @@ class HomeProvider extends StatelessWidget {
     );
   }
 }
-// TODO Implement this library.

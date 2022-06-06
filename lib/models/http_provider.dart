@@ -4,47 +4,42 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class HttpProvider with ChangeNotifier {
-  Map<String, dynamic> _data = {}; //wadah data
+  Map<String, dynamic> _data = {};
 
   Map<String, dynamic> get data =>
-      _data; //getter => untuk mengakses data ini yang akan diakses dari kelas luar
+      _data;
 
-  int get jumlahData => _data.length; //menyimpan jumlah data
+  int get jumlahData => _data.length;
 
   void connectAPI(
-      {String nama = "",
-      String alamat = "",
-      String nim = "",
+      {String nim = "",
+      String nama = "",
       String jk = "",
+      String alamat = "",
       String jurusan = "",
       String request = "get"}) async {
     Uri url = Uri.parse(
-        "http://10.10.42.110/restapi/"); //untuk nyimpan URL dr API
+        "http://localhost/restapi/");
 
-    dynamic hasilResponse;
+    dynamic response;
     if (request == "get") {
-      hasilResponse = await http.get(url);
-      _data = json.decode(hasilResponse.body);
+      response = await http.get(url);
+      _data = json.decode(response.body);
     } else {
-      hasilResponse = await http.post(
-        //buat wadah + simpan data yang ingin dikirimkan
-        url, //diisii oleh url yang dibuat
+      response = await http.post(
+        url,
         body: {
-          "nama": nama,
-          "alamat": alamat,
           "nim": nim,
+          "nama": nama,
           "jk": jk,
+          "alamat": alamat,
           "jurusan": jurusan,
         },
       );
 
-      // print(json.decode(hasilResponse.body)[
-      //     "data"]);
-      _data = json.decode(hasilResponse.body)[
-          "data"]; //untuk menerjemahkan kode-kode yang dihasilkan dr data yang dikirimkan
+      _data = json.decode(response.body)[
+          "data"];
     }
-    notifyListeners(); //untuk ngebaca jika ada perubahan di datanya
-  } //13-26 fungsi we -> konek ke API
+    notifyListeners();
+  }
 }
-
-//http.post -> untuk menampilkan database
